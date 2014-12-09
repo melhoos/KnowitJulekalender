@@ -1,3 +1,13 @@
+"""
+Definer REGNESTYKKER til å være alle regnestykker hvor et tresifret tall blir summert med et annet tresifret tall, og resultatet er et firesifret tall. Alle tallene er positive heltall. Alle de 10 sifrene som utgjør et regnestykke skal inneholde hvert av sifrene 0-9 kun én gang.
+
+Eksempler på slike regnestykker som oppfyller disse egenskapene er 324 + 765 = 1089 og 759 + 843 = 1602.
+
+Hva er den minste verdien for et av leddene i REGNESTYKKER?
+
+For eksemplene over (med kun de to regnestykkene) ville svaret vært 324, da det er det minste leddet.  
+
+"""
 
 import time
 def countNumbers():
@@ -26,6 +36,7 @@ def checkNum(n,m,numSum):
 			all_numbers.remove(number)
 		else: 
 			return False 
+
 	if len(all_numbers) == 0:
 		return True
 	else:
