@@ -1,5 +1,3 @@
-
-
 def isPrime(number):
 	if (number == 2):
 		return True
@@ -10,23 +8,15 @@ def isPrime(number):
 			return False
 	return True
 
-def isMirtall(number):
-	rightway = number
-	wrongway = int((str(number))[::-1])
-	if( rightway != wrongway ):
-		if (isPrime(rightway) and isPrime(wrongway)):
-			return [rightway, wrongway]
+def isMirptall(number):
+	return number != int((str(number))[::-1]) and isPrime(number) and isPrime(int((str(number))[::-1]))
 
 def run():
-	mirtallList = []
-	tallList =  range(1,1000)
-	for n in tallList:
-		if (isMirtall(n) != None ): 
-			[r,w] = isMirtall(n)
-			if (r not in mirtallList and w not in mirtallList):
-				mirtallList.append(r)
-				mirtallList.append(w)
-	print len(mirtallList)
+	mirps = 0 
+	for n in range(1,1000):
+		if isMirptall(n):
+			mirps += 1
+	print mirps
 
 run()
 
