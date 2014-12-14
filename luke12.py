@@ -1,22 +1,13 @@
-def isPrime(number):
-	if (number == 2):
-		return True
-	elif (number == 1):
-		return False
-	for n in range(2, number): 
-		if (number%n == 0 and n != number):
-			return False
-	return True
-
-def isMirptall(number):
-	return number != int((str(number))[::-1]) and isPrime(number) and isPrime(int((str(number))[::-1]))
-
-def run():
-	mirps = 0 
-	for n in range(1,1000):
-		if isMirptall(n):
-			mirps += 1
-	print mirps
-
-run()
-
+import datetime 
+from dateutil.rrule import rrule, DAILY
+def findFriday13ths():
+	count = 0
+	start = datetime.date(1337,1,1)
+	end = datetime.date(2014,12,12)
+	for day in rrule(DAILY, dtstart=start, until=end):
+		dato = str(day).split(" ")
+		dag = dato[0].split("-")
+		if(4 == day.weekday() and dag[2] == str(13)):
+			count += 1
+	print count
+findFriday13ths()

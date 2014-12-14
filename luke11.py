@@ -1,13 +1,21 @@
-import datetime 
-from dateutil.rrule import rrule, DAILY
-def findFriday13ths():
-	count = 0
-	start = datetime.date(1337,1,1)
-	end = datetime.date(2014,12,12)
-	for day in rrule(DAILY, dtstart=start, until=end):
-		dato = str(day).split(" ")
-		dag = dato[0].split("-")
-		if(4 == day.weekday() and dag[2] == str(13)):
-			count += 1
-	print count
-findFriday13ths()
+def sumOfPrimes(N):
+        isPrime, primes = (N + 1)*[True], []
+        for i in xrange(3, N + 1, 2):
+                if not isPrime[i]:
+                        continue
+                primes.append(i)
+                for j in xrange(i*i, N + 1, i):
+                        isPrime[j] = False
+        s = [(sum(primes[0:7]),   0, 0,   7), (sum(primes[0:17]),  0, 1,  17), (sum(primes[0:41]),  0, 2,  41), (sum(primes[0:541]), 0, 3, 541)]
+        while True:
+                allEqual = True
+                for a in s:
+                        if a[0] != s[0][0]:
+                                allEqual = False
+                                break
+                if allEqual and s[0][0] <= N and isPrime[s[0][0]]: return s[0][0]
+                m = min(s)
+                if m[0] > N or m[3] == len(primes)-1: return None
+                s[m[2]] = (m[0] - primes[m[1]] + primes[m[1] + m[3]], m[1] + 1, m[2], m[3])
+ 
+print sumOfPrimes(10000000)
