@@ -26,5 +26,4 @@ def run():
 						possibleList.append(x*y)
 	print len(possibleList)
 
-
 run() 
